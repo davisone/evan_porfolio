@@ -61,15 +61,71 @@ body {
 /* Responsive pour mobile */
 @media (max-width: 480px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
   .nav-links {
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
     margin-top: 1rem;
+  }
+}
+
+/* --- Burger icon --- */
+.burger {
+  display: none;
+  flex-direction: column;
+  margin-left: auto;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1100;
+}
+
+.burger span {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Animation croix */
+.burger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive menu burger */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #1e293b;
+    margin-top: 1rem;
+    padding: 1rem 0;
+  }
+
+  .nav-links.show {
+    display: flex;
   }
 }
 
