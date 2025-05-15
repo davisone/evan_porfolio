@@ -61,10 +61,15 @@ body {
 /* Responsive pour mobile */
 @media (max-width: 480px) {
   .navbar {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #1e293b;
+    padding: 1rem;
+    z-index: 1000;
+  }
 
   .nav-links {
     flex-direction: column;
@@ -74,11 +79,14 @@ body {
   }
 }
 
+
 /* --- Burger icon --- */
 .burger {
   display: none;
   flex-direction: column;
   margin-left: auto;
+  margin-right: 1rem; /* 🟡 ajoute de l'espace à droite */
+  padding: 0.5rem;     /* 🟢 agrandit la zone cliquable */
   cursor: pointer;
   gap: 5px;
   z-index: 1100;
