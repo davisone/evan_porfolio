@@ -226,9 +226,13 @@ body {
   }
 
   .hero {
-    padding: 1.5rem 1rem;
-    height: auto; /* plus flexible pour petits écrans */
-  }
+  padding: 1.5rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 }
 
 
