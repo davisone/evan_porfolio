@@ -75,7 +75,7 @@ if (burger && navLinks) {
 
 
   // --- Lien actif selon la section visible ---
-  const sections = document.querySelectorAll("section[id]");
+  const sections = document.querySelectorAll("section[id], header[id]");
   const navItems = document.querySelectorAll(".nav-links a");
 
   window.addEventListener("scroll", () => {
