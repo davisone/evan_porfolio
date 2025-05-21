@@ -51,28 +51,26 @@ function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
 
-// --- DOM Ready (tout le reste) ---
+// --- DOM Ready ---
 document.addEventListener("DOMContentLoaded", () => {
   // --- Menu burger ---
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('nav-links');
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('nav-links');
 
-if (burger && navLinks) {
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-    burger.classList.toggle('active'); // animation croix
-  });
-
-  // Fermer le menu après clic sur un lien
-  const links = navLinks.querySelectorAll('a');
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('show');
-      burger.classList.remove('active');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      burger.classList.toggle('active');
     });
-  });
-}
 
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        burger.classList.remove('active');
+      });
+    });
+  }
 
   // --- Lien actif selon la section visible ---
   const sections = document.querySelectorAll("section[id], header[id]");
@@ -97,7 +95,7 @@ if (burger && navLinks) {
     });
   });
 
-  // --- Animations au scroll (apparition des éléments) ---
+  // --- Animations au scroll ---
   const animatedElements = document.querySelectorAll(".animate-fade, .animate-slide");
 
   const observer = new IntersectionObserver(entries => {
@@ -107,13 +105,11 @@ if (burger && navLinks) {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
 
   animatedElements.forEach(el => observer.observe(el));
 
-  // --- Animation des barres de compétences ---
+  // --- Animation barres de compétences ---
   const skillsSection = document.querySelector("#competences");
   const progressBars = document.querySelectorAll(".progress-bar-fill");
   let hasAnimated = false;
@@ -128,11 +124,57 @@ if (burger && navLinks) {
         hasAnimated = true;
       }
     });
-  }, {
-    threshold: 0.3
-  });
+  }, { threshold: 0.3 });
 
   if (skillsSection) {
     skillsObserver.observe(skillsSection);
   }
+
+  // --- Envoi du formulaire de contact via Formspree ---
+  const contactForm = document.querySelector(".contact-form");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+
+      const message = document.createElement("p");
+      message.classList.add("form-message");
+
+      if (response.ok) {
+        contactForm.reset();
+        message.textContent = "Merci ! Votre message a bien été envoyé.";
+        message.style.color = "green";
+      } else {
+        message.textContent = "Une erreur s’est produite. Veuillez réessayer.";
+        message.style.color = "red";
+      }
+
+      contactForm.appendChild(message);
+
+      setTimeout(() => message.remove(), 5000);
+    });
+  }
 });
+
+  // --- Bouton retour en haut ---
+  const backToTop = document.getElementById("back-to-top");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.style.display = "block";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
