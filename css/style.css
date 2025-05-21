@@ -157,7 +157,7 @@ section {
 /* =========================
   RESPONSIVE
 ========================= */
-@media (max-width: 768px) {
+@media (max-width: 812px) {
   .navbar {
     position: fixed;
     top: 0;
@@ -238,7 +238,7 @@ html, body {
   z-index: 1;
 }
 
-/* === Titre avec effet machine à écrire (comme en ligne) === */
+/* === Titre principal === */
 .intro-title {
   font-size: 2.8rem;
   color: #38bdf8;
@@ -246,12 +246,18 @@ html, body {
   display: inline-block;
 }
 
+/* === Effet machine à écrire (desktop) === */
 .typing-text {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   border-right: 3px solid #facc15;
-  animation: typing 3s steps(30)
+  animation: typing 3s steps(36) 1 forwards, blink 0.75s step-end infinite;
+}
+
+/* === Clignotement curseur === */
+@keyframes blink {
+  50% { border-color: transparent; }
 }
 
 @keyframes typing {
@@ -259,17 +265,28 @@ html, body {
   to { width: 100%; }
 }
 
-@keyframes blink {
-  50% { border-color: transparent; }
+/* === Mise en valeur du prénom === */
+.highlight {
+  color: #facc15;
+  white-space: nowrap;
 }
 
-/* === Sous-titre === */
-.intro-subtitle {
-  font-size: 1.4rem;
-  color: #cbd5e1;
-  margin: 1rem 0;
-  word-break: break-word;
+/* === Version mobile sans l’effet typing === */
+@media screen and (max-width: 768px) {
+  .intro-title {
+    font-size: 1.6rem; /* réduit depuis 2rem */
+    line-height: 1.2;
+  }
+
+  .typing-text {
+    border-right: none;
+    animation: none;
+    width: auto;
+    white-space: normal;
+    overflow: visible;
+  }
 }
+
 
 /* === Accroche === */
 .intro-hook {
@@ -283,12 +300,54 @@ html, body {
   word-break: break-word;
 }
 
-
-
-/* nom prenom surligné dans acceuil */
-.highlight {
+/* boutton pour attirer l'oeil */
+.btn-gold {
+  position: relative;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #facc15;
+  border-radius: 8px;
+  background-color: transparent;
   color: #facc15;
+  text-transform: uppercase;
+  overflow: hidden;
+  z-index: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Animation lumineuse sur le texte */
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transform: skewX(-20deg);
+  animation: shine 2.5s infinite;
+  z-index: 1;
+}
+
+/* Texte au-dessus de l'effet lumineux */
+.btn-gold span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Au survol : effet plus fort */
+.btn-gold:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #facc15;
+}
+
+@keyframes shine {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
 
 /* =========================
   Animation icônes de fond
