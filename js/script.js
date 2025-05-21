@@ -7,12 +7,11 @@ window.addEventListener("scroll", () => {
 });
 
 // --- Fonctions modals et sliders ---
-const slideIndexMap = {}; // Pour les sliders
+const slideIndexMap = {};
 
 function openModal(id) {
   const modal = document.getElementById(id);
   modal.style.display = 'block';
-
   const slides = modal.querySelectorAll('.slides-container img');
   if (slides.length > 0) {
     slides.forEach(slide => slide.classList.remove('active'));
@@ -28,7 +27,6 @@ function closeModal(id) {
 function changeSlide(modalId, direction) {
   const container = document.querySelector(`#${modalId} .slides-container`);
   const slides = container.querySelectorAll('img');
-
   if (!slideIndexMap[modalId]) slideIndexMap[modalId] = 0;
 
   slides[slideIndexMap[modalId]].classList.remove('active');
@@ -53,7 +51,7 @@ function closeLightbox() {
 
 // --- DOM Ready ---
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Menu burger ---
+  // Menu burger
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('nav-links');
 
@@ -72,13 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Lien actif selon la section visible ---
+  // Lien actif selon la section visible
   const sections = document.querySelectorAll("section[id], header[id]");
   const navItems = document.querySelectorAll(".nav-links a");
 
   window.addEventListener("scroll", () => {
     let current = "";
-
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 100;
       const sectionHeight = section.offsetHeight;
@@ -95,9 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Animations au scroll ---
+  // Animation au scroll
   const animatedElements = document.querySelectorAll(".animate-fade, .animate-slide");
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -106,10 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, { threshold: 0.1 });
-
   animatedElements.forEach(el => observer.observe(el));
 
-  // --- Animation barres de compétences ---
+  // Animation des barres de compétences
   const skillsSection = document.querySelector("#competences");
   const progressBars = document.querySelectorAll(".progress-bar-fill");
   let hasAnimated = false;
@@ -130,13 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
     skillsObserver.observe(skillsSection);
   }
 
-  // --- Envoi du formulaire de contact via Formspree ---
+  // Formulaire contact (Formspree)
   const contactForm = document.querySelector(".contact-form");
-
   if (contactForm) {
     contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
-
       const formData = new FormData(contactForm);
       const response = await fetch(contactForm.action, {
         method: contactForm.method,
@@ -157,15 +150,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       contactForm.appendChild(message);
-
       setTimeout(() => message.remove(), 5000);
     });
   }
-});
 
-  // --- Bouton retour en haut ---
+  // Gérer les cookies depuis le footer
+  const manageCookiesBtn = document.getElementById("manage-cookies");
+  if (manageCookiesBtn) {
+    manageCookiesBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("cookiesConsent");
+      location.reload();
+    });
+  }
+
+  // Bouton retour en haut
   const backToTop = document.getElementById("back-to-top");
-
   window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
       backToTop.style.display = "block";
@@ -173,8 +173,51 @@ document.addEventListener("DOMContentLoaded", () => {
       backToTop.style.display = "none";
     }
   });
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  // Gestion du pop-up cookies
+  const cookiePopup = document.getElementById("cookie-popup");
+  const acceptCookies = document.getElementById("accept-cookies");
+  const rejectCookies = document.getElementById("reject-cookies");
+  const toggleMoreInfo = document.getElementById("toggle-more-info");
+  const moreInfoBlock = document.getElementById("cookie-more-info");
+
+  const consent = localStorage.getItem("cookiesConsent");
+  if (!consent) {
+    cookiePopup.style.display = "flex";
+  } else if (consent === "accepted") {
+    loadGoogleAnalytics();
+  }
+
+  acceptCookies?.addEventListener("click", () => {
+    localStorage.setItem("cookiesConsent", "accepted");
+    cookiePopup.style.display = "none";
+    loadGoogleAnalytics();
   });
 
+  rejectCookies?.addEventListener("click", () => {
+    localStorage.setItem("cookiesConsent", "rejected");
+    cookiePopup.style.display = "none";
+  });
+
+  toggleMoreInfo?.addEventListener("click", () => {
+    moreInfoBlock.style.display = (moreInfoBlock.style.display === "none") ? "block" : "none";
+  });
+});
+
+// --- Chargement de Google Analytics après consentement ---
+function loadGoogleAnalytics() {
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtag/js?id=G-DC4DK4D1P2";
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-DC4DK4D1P2', { anonymize_ip: true });
+}

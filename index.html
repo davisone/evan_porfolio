@@ -28,7 +28,7 @@
 
   <!-- Infos techniques -->
   <meta charset="UTF-8" />
-  
+
   <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DC4DK4D1P2"></script>
 <script>
@@ -94,7 +94,7 @@
     </div>
 
     <div class="hero-content animate-fade">
-      <h1 class="intro-title">Bonjour, je suis <span class="highlight">Evan Davison</span></h1>
+       <h1 class="intro-title">Bonjour, je suis <span class="highlight">Evan Davison  </span></h1>
       <p class="intro-subtitle">Développeur Web en formation</p>
       <p class="intro-hook">
         Actuellement en 2ᵉ année de <strong>BTS SIO</strong> option <strong>SLAM</strong>, je prépare un <strong>Bachelor Développement Web</strong> en alternance à la rentrée 2025.<br>
@@ -532,20 +532,31 @@
     </div>
   </section>
   
-  
-<!-- footer -->
-  <footer class="site-footer">
+  <!-- footer -->
+<footer class="site-footer">
   <div class="footer-container">
-    <p>&copy; 2025 Evan Davison. Tous droits réservés.</p>
+    <div class="footer-columns">
+      <!-- Colonne gauche : Identité -->
+      <div class="footer-col">
+        <p>&copy; 2025 Evan Davison</p>
+        <p>Développeur Web</p>
+        <p>📍 Rennes, France</p>
+      </div>
 
-    <div class="footer-links">
-      <a href="mailto:evandavison.pro@gmail.com">evandavison.pro@gmail.com</a>
-      <a href="assets/img/Cv_Evan.pdf" target="_blank">📄 Mon CV</a>
-      <a href="https://github.com/davisone" target="_blank">💻 GitHub</a>
-      <a href="https://www.linkedin.com/in/evan-d-766478247" target="_blank">🔗 LinkedIn</a>
+      <!-- Colonne centre : Liens pro -->
+      <div class="footer-col">
+        <a href="mailto:evandavison.pro@gmail.com">✉️ evandavison.pro@gmail.com</a>
+        <a href="assets/img/Cv_Evan.pdf" target="_blank">📄 Mon CV</a>
+        <a href="https://github.com/davisone" target="_blank">💻 GitHub</a>
+        <a href="https://www.linkedin.com/in/evan-d-766478247" target="_blank">🔗 LinkedIn</a>
+      </div>
+
+      <!-- Colonne droite : RGPD -->
+      <div class="footer-col">
+        <a href="#" id="manage-cookies">🔒 Gérer les cookies</a>
+        <a href="pages/politique-confidentialite.html">📘 Politique de confidentialité</a>
+      </div>
     </div>
-
-    <p class="footer-location">📍 Rennes, France</p>
   </div>
 </footer>
 
@@ -557,6 +568,35 @@
 
 <!-- bouton Retour en haut -->
   <button id="back-to-top" title="Retour en haut">↑</button>
+
+  <!-- coockies -->
+  <div id="cookie-popup">
+  <div class="cookie-popup-content">
+    <p>
+      Ce site utilise des cookies pour mesurer l’audience via Google Analytics.
+    </p>
+
+    <div class="cookie-popup-buttons">
+      <button id="accept-cookies">J'accepte</button>
+      <button id="reject-cookies">Je refuse</button>
+      <button id="toggle-more-info">En savoir plus</button>
+    </div>
+
+    <div id="cookie-more-info" style="display: none; margin-top: 1rem; text-align: left;">
+      <p><strong>Pourquoi ces cookies ?</strong></p>
+      <ul>
+        <li>📊 Mesure de l’audience via Google Analytics</li>
+        <li>📌 Aucune publicité ni collecte de données personnelles</li>
+        <li>🛡️ IP anonymisées conformément au RGPD</li>
+        <li>📁 Données stockées uniquement à des fins statistiques</li>
+      </ul>
+      <p>
+        Consultez la <a href="pages/politique-confidentialite.html" target="_blank">politique de confidentialité</a> pour en savoir plus.
+      </p>
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>
