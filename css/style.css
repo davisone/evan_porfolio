@@ -271,10 +271,10 @@ html, body {
   white-space: nowrap;
 }
 
-/* === Version mobile sans l’effet typing === */
+/* === Version mobile === */
 @media screen and (max-width: 768px) {
   .intro-title {
-    font-size: 1.6rem; /* réduit depuis 2rem */
+    font-size: 1.2rem; /* réduit depuis 2rem */
     line-height: 1.2;
   }
 
@@ -285,6 +285,8 @@ html, body {
     white-space: normal;
     overflow: visible;
   }
+
+  
 }
 
 
