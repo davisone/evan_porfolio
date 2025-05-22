@@ -35,22 +35,12 @@ ul {
   Annimation présentation acceuil
 ========================= */
 .intro-title {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid #facc15;
-  width: 0;
-  animation: typing 3s steps(21) 1 forwards, blink 0.75s step-end infinite;
+  color: #38bdf8;
+  font-size: 2.8rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 100%;
-  }
-}
 
 @keyframes blink {
   50% {
@@ -238,31 +228,16 @@ html, body {
   z-index: 1;
 }
 
-/* === Titre principal === */
+/* === Titre principal avec animation === */
 .intro-title {
   font-size: 2.8rem;
   color: #38bdf8;
   margin-bottom: 0.3rem;
-  display: inline-block;
-}
-
-/* === Effet machine à écrire (desktop) === */
-.typing-text {
-  display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   border-right: 3px solid #facc15;
-  animation: typing 3s steps(36) 1 forwards, blink 0.75s step-end infinite;
-}
-
-/* === Clignotement curseur === */
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  width: 0;
+  animation: typing 2.5s steps(32, end) 1 forwards, blink 0.75s step-end 3;
 }
 
 /* === Mise en valeur du prénom === */
@@ -271,22 +246,32 @@ html, body {
   white-space: nowrap;
 }
 
-/* === Version mobile === */
+/* === Animation machine à écrire === */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #facc15; }
+}
+
+/* === Responsive mobile : désactivation de l’animation === */
 @media screen and (max-width: 768px) {
   .intro-title {
-    font-size: 1.2rem; /* réduit depuis 2rem */
+    font-size: 1.2rem;
     line-height: 1.2;
+    animation: none !important;
+    border-right: none !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    width: auto !important;
   }
 
-  .typing-text {
-    border-right: none;
-    animation: none;
-    width: auto;
+  .highlight {
     white-space: normal;
-    overflow: visible;
   }
-
-  
 }
 
 
