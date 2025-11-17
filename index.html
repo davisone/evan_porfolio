@@ -28,20 +28,6 @@
 
   <!-- Infos techniques -->
   <meta charset="UTF-8" />
-
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DC4DK4D1P2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DC4DK4D1P2', {
-    anonymize_ip: true
-  });
-</script>
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Evan Davison - Portfolio</title>
 
@@ -84,13 +70,13 @@
   <!-- SECTION ACCUEIL -->
    <header id="accueil" class="hero">
     <div class="tech-background">
-      <img src="assets/img/icons/html5.svg" alt="HTML" class="bg-icon">
-      <img src="assets/img/icons/css.svg" alt="CSS" class="bg-icon">
-      <img src="assets/img/icons/javascript.svg" alt="JavaScript" class="bg-icon">
-      <img src="assets/img/icons/laravel.svg" alt="Laravel" class="bg-icon">
-      <img src="assets/img/icons/java.svg" alt="Java" class="bg-icon">
-      <img src="https://cdn.simpleicons.org/flutter/FFFFFF" alt="Flutter" class="bg-icon"/>
-      <img src="assets/img/icons/mysql.svg" alt="MySQL" class="bg-icon">
+      <img src="assets/img/icons/html5.svg" alt="" class="bg-icon" aria-hidden="true">
+      <img src="assets/img/icons/css.svg" alt="" class="bg-icon" aria-hidden="true">
+      <img src="assets/img/icons/javascript.svg" alt="" class="bg-icon" aria-hidden="true">
+      <img src="assets/img/icons/laravel.svg" alt="" class="bg-icon" aria-hidden="true">
+      <img src="assets/img/icons/java.svg" alt="" class="bg-icon" aria-hidden="true">
+      <img src="https://cdn.simpleicons.org/flutter/FFFFFF" alt="" class="bg-icon" aria-hidden="true"/>
+      <img src="assets/img/icons/mysql.svg" alt="" class="bg-icon" aria-hidden="true">
     </div>
 
     <div class="hero-content animate-fade">
@@ -119,7 +105,7 @@
         Après l’obtention de mon <strong>BTS SIO</strong> au lycée Saint Sauveur à Redon, j’ai choisi de poursuivre mes études dans le domaine du web.<br>
         Je suis actuellement en <strong>alternance chez Le Référencement Professionnel</strong>.<br>
         Je recherche dès à présent une <strong>entreprise pour un Master en Développement Web</strong> sur 2 ans à partir de <strong>septembre 2026</strong>.<br>
-        <a href="assets/img/Cv_Evan.pdf" target="_blank">Voici mon CV</a>.
+        <a href="assets/img/Cv_evan.pdf" target="_blank">Voici mon CV</a>.
       </p>
 
 
@@ -131,11 +117,11 @@
     </div>
 
     <div class="about-image">
-      <img src="assets/img/photo_identité.jpg" alt="Evan Davison">
+      <img src="assets/img/photo_identité.jpg" alt="Photo de profil d'Evan Davison, développeur web" loading="lazy">
       <div class="socials">
-        <a href="https://github.com/davisone" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/evan-d-766478247" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </div> 
+        <a href="https://github.com/davisone" target="_blank" aria-label="Profil GitHub d'Evan Davison"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/evan-d-766478247" target="_blank" aria-label="Profil LinkedIn d'Evan Davison"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+      </div>
     </div>
   </div>
 </section>
@@ -312,14 +298,20 @@
         <li>Fonctionnalités : formulaire de contact, interface admin, pages dynamiques (services, réalisations)</li>
         <li>Outils : Figma (maquettes), Notion (organisation), GitHub, MailTrap (test e-mails)</li>
       </ul>
+      <p style="margin-top: 1.5rem;">
+        <a href="https://github.com/davisone/haut-en-couleur" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #1e293b; padding: 0.6rem 1.2rem; border-radius: 8px; color: #38bdf8; font-weight: 600; text-decoration: none; transition: background-color 0.3s ease;">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          Voir le code sur GitHub
+        </a>
+      </p>
       <div class="slider">
         <button class="prev" onclick="changeSlide('project1', -1)">&#10094;</button>
         
         <div class="slides-container">
-          <img src="assets/img/HEC/acceuil.jpg" alt="Capture 1" onclick="openLightbox(this.src)">
-          <img src="assets/img/HEC/a_propos.jpg" alt="Capture 2" onclick="openLightbox(this.src)">
-          <img src="assets/img/HEC/realisations.jpg" alt="Capture 3" onclick="openLightbox(this.src)">
-          <img src="assets/img/HEC/contact.jpg" alt="Capture 4" onclick="openLightbox(this.src)">
+          <img src="assets/img/HEC/acceuil.jpg" alt="Capture d'écran de la page d'accueil du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/HEC/a_propos.jpg" alt="Capture d'écran de la page à propos du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/HEC/realisations.jpg" alt="Capture d'écran de la page réalisations du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/HEC/contact.jpg" alt="Capture d'écran de la page contact du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
         </div>
         <button class="next" onclick="changeSlide('project1', 1)">&#10095;</button>
       </div>
@@ -351,13 +343,19 @@
         <li>Base de données distante : MySQL</li>
         <li>Fonctionnalités : statistiques, couleurs dynamiques, mode hors-ligne, vue des majors</li>
       </ul>
+      <p style="margin-top: 1.5rem;">
+        <a href="https://github.com/davisone/gnotes" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #1e293b; padding: 0.6rem 1.2rem; border-radius: 8px; color: #38bdf8; font-weight: 600; text-decoration: none; transition: background-color 0.3s ease;">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          Voir le code sur GitHub
+        </a>
+      </p>
       <div class="slider">
         <button class="prev" onclick="changeSlide('project2', -1)">&#10094;</button>
         <div class="slides-container">
-          <img src="assets/img/Gnotes/acceuil.jpg" alt="Capture 1" onclick="openLightbox(this.src)">
-          <img src="assets/img/Gnotes/utilisateurs.jpg" alt="Capture 2" onclick="openLightbox(this.src)">
-          <img src="assets/img/Gnotes/evaluations.jpg" alt="Capture 3" onclick="openLightbox(this.src)">
-          <img src="assets/img/Gnotes/matieres.jpg" alt="Capture 4" onclick="openLightbox(this.src)">
+          <img src="assets/img/Gnotes/acceuil.jpg" alt="Capture d'écran de la page d'accueil de l'application GNotes" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/Gnotes/utilisateurs.jpg" alt="Capture d'écran de la gestion des utilisateurs de GNotes" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/Gnotes/evaluations.jpg" alt="Capture d'écran des évaluations dans GNotes" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/Gnotes/matieres.jpg" alt="Capture d'écran de la gestion des matières dans GNotes" onclick="openLightbox(this.src)" loading="lazy">
         </div>
         <button class="next" onclick="changeSlide('project2', 1)">&#10095;</button>
       </div>
@@ -386,14 +384,20 @@
         <li>Fonctionnalités : rapports, visiteurs, praticiens, médicaments</li>
         <li>Interface : Blade + Tailwind CSS</li>
       </ul>
+      <p style="margin-top: 1.5rem;">
+        <a href="https://github.com/davisone/gsb-etudiants" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #1e293b; padding: 0.6rem 1.2rem; border-radius: 8px; color: #38bdf8; font-weight: 600; text-decoration: none; transition: background-color 0.3s ease;">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          Voir le code sur GitHub
+        </a>
+      </p>
       <div class="slider">
         <button class="prev" onclick="changeSlide('project3', -1)">&#10094;</button>
         <div class="slides-container">
-          <img src="assets/img/GSB/acceuil.jpg" alt="Capture 1" onclick="openLightbox(this.src)">
-          <img src="assets/img/GSB/visiteurs.jpg" alt="Capture 2" onclick="openLightbox(this.src)">
-          <img src="assets/img/GSB/medicaments.jpg" alt="Capture 3" onclick="openLightbox(this.src)">
-          <img src="assets/img/GSB/praticiens.jpg" alt="Capture 4" onclick="openLightbox(this.src)">
-          <img src="assets/img/GSB/compte_rendu.jpg" alt="Capture 5" onclick="openLightbox(this.src)">
+          <img src="assets/img/GSB/acceuil.jpg" alt="Capture d'écran de la page d'accueil de l'application GSB" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/GSB/visiteurs.jpg" alt="Capture d'écran de la gestion des visiteurs dans GSB" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/GSB/medicaments.jpg" alt="Capture d'écran de la gestion des médicaments dans GSB" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/GSB/praticiens.jpg" alt="Capture d'écran de la gestion des praticiens dans GSB" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/GSB/compte_rendu.jpg" alt="Capture d'écran des comptes rendus de visite dans GSB" onclick="openLightbox(this.src)" loading="lazy">
         </div>
         <button class="next" onclick="changeSlide('project3', 1)">&#10095;</button>
       </div>
@@ -495,14 +499,12 @@
         <div class="progress-bar-fill" data-percentage="75"></div>
       </div>
     </div>
-
   </div>
 </section>
 
   
 
 <!-- soft skills -->
-
 <section id="softskills" class="section animate-slide">
     <h2>Soft Skills</h2>
     <div class="soft-skills-grid">
@@ -548,7 +550,7 @@
           <a href="https://github.com/davisone" target="_blank">github.com/davisone</a>
         </p>
         <p><strong>Mon CV :</strong><br>
-          <a href="assets/img/Cv_Evan.pdf" target="_blank">Télécharger le CV</a>
+          <a href="assets/img/Cv_evan.pdf" target="_blank">Télécharger le CV</a>
         </p>
       </div>
   
@@ -569,7 +571,7 @@
       <!-- Colonne centre : Liens pro -->
       <div class="footer-col">
         <a href="mailto:evandavison.pro@gmail.com">✉️ evandavison.pro@gmail.com</a>
-        <a href="assets/img/Cv_Evan.pdf" target="_blank">📄 Mon CV</a>
+        <a href="assets/img/Cv_evan.pdf" target="_blank">📄 Mon CV</a>
         <a href="https://github.com/davisone" target="_blank">💻 GitHub</a>
         <a href="https://www.linkedin.com/in/evan-d-766478247" target="_blank">🔗 LinkedIn</a>
       </div>
