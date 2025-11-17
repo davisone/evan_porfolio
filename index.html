@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <!-- Référencement -->
-  <meta name="description" content="Evan Davison, développeur web à Rennes. Découvrez mon portfolio, mes projets Laravel, Java, Flutter et mes compétences 
-  techniques. Alternance dispo dès sept. 2025.">
+  <meta name="description" content="Evan Davison - Développeur web en Bachelor à Sup de Vinci, actuellement en alternance chez Le Référencement Professionnel. Spécialisé en Laravel, PHP, Java, Flutter et Spring Boot. Découvrez mes projets (sites vitrines, applications de gestion, APIs REST) et mon parcours BTS SIO SLAM. Recherche alternance Master 2026 à Rennes.">
   <meta name="author" content="Evan Davison">
+  <meta name="keywords" content="développeur web, Laravel, PHP, Java, Flutter, Spring Boot, MySQL, Rennes, alternance, Bachelor Développement Web, Sup de Vinci, portfolio développeur">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Evan Davison - Portfolio développeur web">
@@ -40,6 +40,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
+  <!-- Données structurées Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Evan Davison",
+    "jobTitle": "Développeur Web",
+    "url": "https://evandavison.fr",
+    "email": "evandavison.pro@gmail.com",
+    "telephone": "+33651019506",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rennes",
+      "addressCountry": "FR"
+    },
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Sup de Vinci",
+        "location": "Chantepie, France"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Lycée Saint Sauveur",
+        "location": "Redon, France"
+      }
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Le Référencement Professionnel"
+    },
+    "knowsAbout": [
+      "Laravel",
+      "PHP",
+      "Java",
+      "Flutter",
+      "Spring Boot",
+      "MySQL",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Développement Web"
+    ],
+    "sameAs": [
+      "https://github.com/davisone",
+      "https://www.linkedin.com/in/evan-d-766478247"
+    ],
+    "image": "https://evandavison.fr/assets/img/photo_identité.jpg"
+  }
+  </script>
 
 </head>
 
@@ -530,10 +580,18 @@
       
      <!-- Formulaire -->
 <form action="https://formspree.io/f/mzzrjgyr" method="POST" class="contact-form">
-  <input type="text" name="name" placeholder="Votre nom" required>
-  <input type="text" name="company" placeholder="Nom de l'entreprise (facultatif)">
-  <input type="email" name="email" placeholder="Votre e-mail" required>
-  <textarea name="message" rows="6" placeholder="Votre message..." required></textarea>
+  <label for="contact-name" class="visually-hidden">Votre nom</label>
+  <input type="text" id="contact-name" name="name" placeholder="Votre nom" required>
+
+  <label for="contact-company" class="visually-hidden">Nom de l'entreprise (facultatif)</label>
+  <input type="text" id="contact-company" name="company" placeholder="Nom de l'entreprise (facultatif)">
+
+  <label for="contact-email" class="visually-hidden">Votre adresse e-mail</label>
+  <input type="email" id="contact-email" name="email" placeholder="Votre e-mail" required>
+
+  <label for="contact-message" class="visually-hidden">Votre message</label>
+  <textarea id="contact-message" name="message" rows="6" placeholder="Votre message..." required></textarea>
+
   <button type="submit">Envoyer</button>
 </form>
 
