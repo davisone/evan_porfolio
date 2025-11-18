@@ -25,6 +25,30 @@ a {
   text-decoration: none;
 }
 
+/* Focus visible pour l'accessibilité */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+}
+
+/* Support de :focus-visible pour les navigateurs modernes */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -122,6 +146,8 @@ section {
   cursor: pointer;
   gap: 5px;
   z-index: 1100;
+  background: transparent;
+  border: none;
 }
 
 .burger span {
@@ -785,6 +811,10 @@ html, body {
   color: #facc15;
   cursor: pointer;
   margin-top: -1rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  line-height: 1;
 }
 
 /* Animation */

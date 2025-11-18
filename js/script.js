@@ -18,10 +18,62 @@ function openModal(id) {
     slides[0].classList.add('active');
     slideIndexMap[id] = 0;
   }
+
+  // Focus sur le bouton de fermeture pour l'accessibilité
+  const closeButton = modal.querySelector('.close');
+  if (closeButton) {
+    closeButton.focus();
+  }
+
+  // Piéger le focus dans le modal
+  trapFocus(modal);
 }
 
 function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
+  const modal = document.getElementById(id);
+  modal.style.display = 'none';
+
+  // Retirer l'écouteur d'événement Escape
+  document.removeEventListener('keydown', handleModalEscape);
+}
+
+// Fonction pour gérer la touche Escape
+function handleModalEscape(event) {
+  if (event.key === 'Escape') {
+    const openModals = document.querySelectorAll('.modal[style*="display: block"]');
+    openModals.forEach(modal => {
+      modal.style.display = 'none';
+    });
+    document.removeEventListener('keydown', handleModalEscape);
+  }
+}
+
+// Fonction pour piéger le focus dans le modal
+function trapFocus(modal) {
+  const focusableElements = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const firstFocusable = focusableElements[0];
+  const lastFocusable = focusableElements[focusableElements.length - 1];
+
+  modal.addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          lastFocusable.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          firstFocusable.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  });
+
+  // Ajouter l'écouteur pour Escape
+  document.addEventListener('keydown', handleModalEscape);
 }
 
 function changeSlide(modalId, direction) {
@@ -57,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (burger && navLinks) {
     burger.addEventListener('click', () => {
+      const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !isExpanded);
       navLinks.classList.toggle('show');
       burger.classList.toggle('active');
     });
@@ -66,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('show');
         burger.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
       });
     });
   }

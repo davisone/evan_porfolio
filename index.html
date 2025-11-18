@@ -95,13 +95,13 @@
 
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="logo">Evan Davison</div>
-    <div class="burger" id="burger">
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav-links" aria-label="Menu de navigation">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
     <ul class="nav-links" id="nav-links">
       <li><a href="#accueil">accueil</a></li>
       <li><a href="#about">À propos</a></li>
@@ -330,10 +330,10 @@
   </section>
   
   <!-- MODAL Projet 1 -->
-<div id="project1" class="modal">
+<div id="project1" class="modal" role="dialog" aria-labelledby="modal-title-1" aria-modal="true">
     <div class="modal-content">
-      <span class="close" onclick="closeModal('project1')">&times;</span>
-      <h3>Site vitrine – Haut En Couleur (Laravel)</h3>
+      <button class="close" onclick="closeModal('project1')" aria-label="Fermer la fenêtre">&times;</button>
+      <h3 id="modal-title-1">Site vitrine – Haut En Couleur (Laravel)</h3>
       <p>
         Ce projet a été réalisé dans le cadre d’un <strong>stage de 6 semaines</strong> chez l’entreprise <em>Haut En Couleur</em>, spécialisée dans la rénovation intérieure et extérieure.
         L’objectif était de créer un <strong>site vitrine moderne et responsive</strong> permettant de présenter l’activité de l’entreprise et de faciliter la prise de contact avec les clients.
@@ -370,10 +370,10 @@
   </div>
   
   <!-- MODAL Projet 2 -->
-<div id="project2" class="modal">
+<div id="project2" class="modal" role="dialog" aria-labelledby="modal-title-2" aria-modal="true">
     <div class="modal-content">
-      <span class="close" onclick="closeModal('project2')">&times;</span>
-      <h3>Application GNotes – Gestion de notes BTS</h3>
+      <button class="close" onclick="closeModal('project2')" aria-label="Fermer la fenêtre">&times;</button>
+      <h3 id="modal-title-2">Application GNotes – Gestion de notes BTS</h3>
       <p>
         <strong>GNotes</strong> est une application JavaFX développée dans le cadre de ma 2<sup>e</sup> année de BTS SIO SLAM,
         dont l'objectif est de permettre aux enseignants de <strong>gérer les notes, les appréciations et les statistiques</strong> des étudiants de manière fluide et hors ligne.
@@ -415,10 +415,10 @@
   
   
   <!-- MODAL Projet 3 -->
-<div id="project3" class="modal">
+<div id="project3" class="modal" role="dialog" aria-labelledby="modal-title-3" aria-modal="true">
     <div class="modal-content">
-      <span class="close" onclick="closeModal('project3')">&times;</span>
-      <h3>GSB Étudiants – Application Laravel</h3>
+      <button class="close" onclick="closeModal('project3')" aria-label="Fermer la fenêtre">&times;</button>
+      <h3 id="modal-title-3">GSB Étudiants – Application Laravel</h3>
       <p>
         Ce projet a été réalisé avec le framework <strong>Laravel</strong> et consistait à développer une application de gestion des visiteurs médicaux pour le laboratoire <strong>GSB</strong>.
         L’objectif était de permettre aux utilisateurs de <strong>visualiser, créer et gérer des rapports de visite</strong> pour chaque praticien rencontré.
