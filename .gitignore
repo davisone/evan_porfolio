@@ -1,0 +1,22 @@
+# Fichiers de sauvegarde
+*.backup
+*.bak
+*~
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Fichiers temporaires
+*.tmp
+.cache/
