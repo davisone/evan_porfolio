@@ -103,6 +103,67 @@ function closeLightbox() {
 
 // --- DOM Ready ---
 document.addEventListener("DOMContentLoaded", () => {
+  // Event listeners pour les modals de projets
+  document.querySelectorAll('.project-card').forEach((card, index) => {
+    card.addEventListener('click', () => {
+      const projectId = `project${index + 1}`;
+      openModal(projectId);
+    });
+    // Rendre les cards accessibles au clavier
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const projectId = `project${index + 1}`;
+        openModal(projectId);
+      }
+    });
+  });
+
+  // Event listeners pour les boutons de fermeture des modals
+  document.querySelectorAll('.modal .close').forEach(closeBtn => {
+    closeBtn.addEventListener('click', () => {
+      const modal = closeBtn.closest('.modal');
+      closeModal(modal.id);
+    });
+  });
+
+  // Event listeners pour les boutons prev/next des sliders
+  document.querySelectorAll('.slider .prev').forEach(prevBtn => {
+    prevBtn.addEventListener('click', () => {
+      const modal = prevBtn.closest('.modal');
+      changeSlide(modal.id, -1);
+    });
+  });
+
+  document.querySelectorAll('.slider .next').forEach(nextBtn => {
+    nextBtn.addEventListener('click', () => {
+      const modal = nextBtn.closest('.modal');
+      changeSlide(modal.id, 1);
+    });
+  });
+
+  // Event listeners pour les images dans les sliders (lightbox)
+  document.querySelectorAll('.slides-container img').forEach(img => {
+    img.addEventListener('click', () => {
+      openLightbox(img.src);
+    });
+    // Rendre les images accessibles au clavier
+    img.setAttribute('tabindex', '0');
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(img.src);
+      }
+    });
+  });
+
+  // Event listener pour fermer le lightbox
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.addEventListener('click', closeLightbox);
+  }
+
   // Menu burger
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('nav-links');
@@ -185,27 +246,66 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
-      const formData = new FormData(contactForm);
-      const response = await fetch(contactForm.action, {
-        method: contactForm.method,
-        body: formData,
-        headers: { Accept: "application/json" }
-      });
+
+      // Supprimer les anciens messages d'erreur
+      const oldMessage = contactForm.querySelector(".form-message");
+      if (oldMessage) {
+        oldMessage.remove();
+      }
 
       const message = document.createElement("p");
       message.classList.add("form-message");
+      message.setAttribute("role", "status");
+      message.setAttribute("aria-live", "polite");
 
-      if (response.ok) {
-        contactForm.reset();
-        message.textContent = "Merci ! Votre message a bien été envoyé.";
-        message.style.color = "green";
-      } else {
-        message.textContent = "Une erreur s’est produite. Veuillez réessayer.";
+      try {
+        const formData = new FormData(contactForm);
+
+        // Validation côté client
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const messageText = formData.get("message");
+
+        if (!name || name.trim().length < 2) {
+          throw new Error("Veuillez entrer un nom valide (minimum 2 caractères).");
+        }
+
+        if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+          throw new Error("Veuillez entrer une adresse e-mail valide.");
+        }
+
+        if (!messageText || messageText.trim().length < 10) {
+          throw new Error("Votre message doit contenir au moins 10 caractères.");
+        }
+
+        // Envoi du formulaire
+        const response = await fetch(contactForm.action, {
+          method: contactForm.method,
+          body: formData,
+          headers: { Accept: "application/json" }
+        });
+
+        if (response.ok) {
+          contactForm.reset();
+          message.textContent = "✓ Merci ! Votre message a bien été envoyé.";
+          message.style.color = "green";
+        } else {
+          const errorData = await response.json().catch(() => null);
+          const errorText = errorData?.error || "Une erreur s'est produite lors de l'envoi.";
+          throw new Error(errorText);
+        }
+      } catch (error) {
+        if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
+          message.textContent = "✗ Erreur réseau. Vérifiez votre connexion et réessayez.";
+        } else {
+          message.textContent = `✗ ${error.message}`;
+        }
         message.style.color = "red";
+        console.error("Erreur formulaire:", error);
       }
 
       contactForm.appendChild(message);
-      setTimeout(() => message.remove(), 5000);
+      setTimeout(() => message.remove(), 7000);
     });
   }
 

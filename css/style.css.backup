@@ -56,9 +56,15 @@ ul {
 }
 
 /* =========================
-  Annimation présentation accueil
+  Annimation présentation acceuil
 ========================= */
-/* .intro-title déplacé plus bas avec animation complète */
+.intro-title {
+  color: #38bdf8;
+  font-size: 2.8rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
 
 @keyframes blink {
   50% {
@@ -117,7 +123,16 @@ section {
 /* =========================
   HERO SECTION
 ========================= */
-/* .hero fusionné avec la section "Section Accueil" plus bas */
+.hero {
+  min-height: 100vh;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+}
 
 /* =========================
   BURGER ICON
@@ -205,7 +220,14 @@ section {
   transition: width 0.2s ease-out;
 }
 
-/* === Reset de base (fusionné avec BASE) === */
+/* === Reset de base === */
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
 
 /* === Section Accueil === */
 .hero {

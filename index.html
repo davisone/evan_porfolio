@@ -30,6 +30,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Evan Davison - Portfolio</title>
 
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    img-src 'self' https://cdn.simpleicons.org data:;
+    connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com;
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self' https://formspree.io;
+  ">
+
   <!-- Styles et scripts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css" />
@@ -86,7 +99,7 @@
       "https://github.com/davisone",
       "https://www.linkedin.com/in/evan-d-766478247"
     ],
-    "image": "https://evandavison.fr/assets/img/photo_identité.jpg"
+    "image": "https://evandavison.fr/assets/img/photo_identite.jpg"
   }
   </script>
 
@@ -166,7 +179,7 @@
     </div>
 
     <div class="about-image">
-      <img src="assets/img/photo_identité.jpg" alt="Photo de profil d'Evan Davison, développeur web" loading="lazy">
+      <img src="assets/img/photo_identite.jpg" alt="Photo de profil d'Evan Davison, développeur web" loading="lazy">
       <div class="socials">
         <a href="https://github.com/davisone" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub d'Evan Davison"><i class="fab fa-github" aria-hidden="true"></i></a>
         <a href="https://www.linkedin.com/in/evan-d-766478247" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn d'Evan Davison"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
@@ -305,21 +318,21 @@
     <h2>Mes projets</h2>
     <div class="projects-grid">
      
-      <div class="project-card" onclick="openModal('project1')">
+      <div class="project-card">
         <div class="project-info">
           <h3>Site Haut En Couleur</h3>
           <p>Laravel – Site vitrine moderne</p>
         </div>
       </div>
-      
-      <div class="project-card" onclick="openModal('project2')">
+
+      <div class="project-card">
         <div class="project-info">
           <h3>Projet GNotes</h3>
           <p>Application de gestion de notes – JavaFX & Spring Boot</p>
         </div>
       </div>
-      
-      <div class="project-card" onclick="openModal('project3')">
+
+      <div class="project-card">
         <div class="project-info">
           <h3>GSB Étudiants</h3>
           <p>Application Laravel – gestion des rapports et visiteurs</p>
@@ -331,7 +344,7 @@
   <!-- MODAL Projet 1 -->
 <div id="project1" class="modal" role="dialog" aria-labelledby="modal-title-1" aria-modal="true">
     <div class="modal-content">
-      <button class="close" onclick="closeModal('project1')" aria-label="Fermer la fenêtre">&times;</button>
+      <button class="close" aria-label="Fermer la fenêtre">&times;</button>
       <h3 id="modal-title-1">Site vitrine – Haut En Couleur (Laravel)</h3>
       <p>
         Ce projet a été réalisé dans le cadre d’un <strong>stage de 6 semaines</strong> chez l’entreprise <em>Haut En Couleur</em>, spécialisée dans la rénovation intérieure et extérieure.
@@ -354,15 +367,15 @@
         </a>
       </p>
       <div class="slider">
-        <button class="prev" onclick="changeSlide('project1', -1)">&#10094;</button>
-        
+        <button class="prev">&#10094;</button>
+
         <div class="slides-container">
-          <img src="assets/img/HEC/acceuil.jpg" alt="Capture d'écran de la page d'accueil du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/HEC/a_propos.jpg" alt="Capture d'écran de la page à propos du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/HEC/realisations.jpg" alt="Capture d'écran de la page réalisations du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/HEC/contact.jpg" alt="Capture d'écran de la page contact du site Haut En Couleur" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/HEC/accueil.jpg" alt="Capture d'écran de la page d'accueil du site Haut En Couleur" loading="lazy">
+          <img src="assets/img/HEC/a_propos.jpg" alt="Capture d'écran de la page à propos du site Haut En Couleur" loading="lazy">
+          <img src="assets/img/HEC/realisations.jpg" alt="Capture d'écran de la page réalisations du site Haut En Couleur" loading="lazy">
+          <img src="assets/img/HEC/contact.jpg" alt="Capture d'écran de la page contact du site Haut En Couleur" loading="lazy">
         </div>
-        <button class="next" onclick="changeSlide('project1', 1)">&#10095;</button>
+        <button class="next">&#10095;</button>
       </div>
       
     </div>
@@ -371,7 +384,7 @@
   <!-- MODAL Projet 2 -->
 <div id="project2" class="modal" role="dialog" aria-labelledby="modal-title-2" aria-modal="true">
     <div class="modal-content">
-      <button class="close" onclick="closeModal('project2')" aria-label="Fermer la fenêtre">&times;</button>
+      <button class="close" aria-label="Fermer la fenêtre">&times;</button>
       <h3 id="modal-title-2">Application GNotes – Gestion de notes BTS</h3>
       <p>
         <strong>GNotes</strong> est une application JavaFX développée dans le cadre de ma 2<sup>e</sup> année de BTS SIO SLAM,
@@ -399,14 +412,14 @@
         </a>
       </p>
       <div class="slider">
-        <button class="prev" onclick="changeSlide('project2', -1)">&#10094;</button>
+        <button class="prev">&#10094;</button>
         <div class="slides-container">
-          <img src="assets/img/Gnotes/acceuil.jpg" alt="Capture d'écran de la page d'accueil de l'application GNotes" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/Gnotes/utilisateurs.jpg" alt="Capture d'écran de la gestion des utilisateurs de GNotes" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/Gnotes/evaluations.jpg" alt="Capture d'écran des évaluations dans GNotes" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/Gnotes/matieres.jpg" alt="Capture d'écran de la gestion des matières dans GNotes" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/Gnotes/accueil.jpg" alt="Capture d'écran de la page d'accueil de l'application GNotes" loading="lazy">
+          <img src="assets/img/Gnotes/utilisateurs.jpg" alt="Capture d'écran de la gestion des utilisateurs de GNotes" loading="lazy">
+          <img src="assets/img/Gnotes/evaluations.jpg" alt="Capture d'écran des évaluations dans GNotes" loading="lazy">
+          <img src="assets/img/Gnotes/matieres.jpg" alt="Capture d'écran de la gestion des matières dans GNotes" loading="lazy">
         </div>
-        <button class="next" onclick="changeSlide('project2', 1)">&#10095;</button>
+        <button class="next">&#10095;</button>
       </div>
       
     </div>
@@ -416,7 +429,7 @@
   <!-- MODAL Projet 3 -->
 <div id="project3" class="modal" role="dialog" aria-labelledby="modal-title-3" aria-modal="true">
     <div class="modal-content">
-      <button class="close" onclick="closeModal('project3')" aria-label="Fermer la fenêtre">&times;</button>
+      <button class="close" aria-label="Fermer la fenêtre">&times;</button>
       <h3 id="modal-title-3">GSB Étudiants – Application Laravel</h3>
       <p>
         Ce projet a été réalisé avec le framework <strong>Laravel</strong> et consistait à développer une application de gestion des visiteurs médicaux pour le laboratoire <strong>GSB</strong>.
@@ -440,15 +453,15 @@
         </a>
       </p>
       <div class="slider">
-        <button class="prev" onclick="changeSlide('project3', -1)">&#10094;</button>
+        <button class="prev">&#10094;</button>
         <div class="slides-container">
-          <img src="assets/img/GSB/acceuil.jpg" alt="Capture d'écran de la page d'accueil de l'application GSB" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/GSB/visiteurs.jpg" alt="Capture d'écran de la gestion des visiteurs dans GSB" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/GSB/medicaments.jpg" alt="Capture d'écran de la gestion des médicaments dans GSB" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/GSB/praticiens.jpg" alt="Capture d'écran de la gestion des praticiens dans GSB" onclick="openLightbox(this.src)" loading="lazy">
-          <img src="assets/img/GSB/compte_rendu.jpg" alt="Capture d'écran des comptes rendus de visite dans GSB" onclick="openLightbox(this.src)" loading="lazy">
+          <img src="assets/img/GSB/accueil.jpg" alt="Capture d'écran de la page d'accueil de l'application GSB" loading="lazy">
+          <img src="assets/img/GSB/visiteurs.jpg" alt="Capture d'écran de la gestion des visiteurs dans GSB" loading="lazy">
+          <img src="assets/img/GSB/medicaments.jpg" alt="Capture d'écran de la gestion des médicaments dans GSB" loading="lazy">
+          <img src="assets/img/GSB/praticiens.jpg" alt="Capture d'écran de la gestion des praticiens dans GSB" loading="lazy">
+          <img src="assets/img/GSB/compte_rendu.jpg" alt="Capture d'écran des comptes rendus de visite dans GSB" loading="lazy">
         </div>
-        <button class="next" onclick="changeSlide('project3', 1)">&#10095;</button>
+        <button class="next">&#10095;</button>
       </div>
       
     </div>
@@ -644,7 +657,7 @@
 
 
   <!-- ajout fonction zoom sur image pop up -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <div id="lightbox" class="lightbox">
     <img id="lightbox-img" src="" alt="Zoom image">
   </div> 
 
