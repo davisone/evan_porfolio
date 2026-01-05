@@ -319,7 +319,7 @@
       <div class="project-card">
         <div class="project-info">
           <h3>Site Haut En Couleur</h3>
-          <p>Laravel – Site vitrine moderne</p>
+          <p>Next.js 16 & React 19 – Site vitrine multilingue moderne</p>
         </div>
       </div>
 
@@ -343,33 +343,52 @@
 <div id="project1" class="modal" role="dialog" aria-labelledby="modal-title-1" aria-modal="true">
     <div class="modal-content">
       <button class="close" aria-label="Fermer la fenêtre">&times;</button>
-      <h3 id="modal-title-1">Site vitrine – Haut En Couleur (Laravel)</h3>
+      <h3 id="modal-title-1">Site vitrine – Haut En Couleur</h3>
       <p>
-        Ce projet a été réalisé dans le cadre d’un <strong>stage de 6 semaines</strong> chez l’entreprise <em>Haut En Couleur</em>, spécialisée dans la rénovation intérieure et extérieure.
-        L’objectif était de créer un <strong>site vitrine moderne et responsive</strong> permettant de présenter l’activité de l’entreprise et de faciliter la prise de contact avec les clients.
+        <strong>Site vitrine moderne et multilingue (FR/EN)</strong> développé lors d'un stage de 6 semaines pour une entreprise de rénovation.
+        Projet complet incluant le développement, le référencement et la gestion de la présence digitale.
       </p>
-      <p>
-        J’ai conçu le site en utilisant le framework <strong>Laravel</strong>, avec une architecture MVC complète, un système d’authentification sécurisé (Laravel Breeze), une interface admin, un formulaire de contact fonctionnel avec envoi d’e-mails, et une gestion dynamique des contenus (services, réalisations...).
+      <p style="text-align: center; margin: 1rem 0;">
+        🌐 <a href="https://haut-en-couleur.fr" target="_blank" rel="noopener noreferrer" style="font-weight: bold;">Voir le site en ligne</a>
       </p>
+
+      <h4>🛠️ Technologies</h4>
+      <p><strong>Next.js 16, React 19, TypeScript, Tailwind CSS 4</strong><br>
+      next-intl (i18n), Resend, Zod, hCaptcha, React Leaflet, Jest</p>
+
+      <h4>✨ Fonctionnalités clés</h4>
       <ul>
-        <li>Framework : Laravel</li>
-        <li>Frontend : Blade, Bootstrap, JavaScript</li>
-        <li>Backend : PHP + MySQL</li>
-        <li>Fonctionnalités : formulaire de contact, interface admin, pages dynamiques (services, réalisations)</li>
-        <li>Outils : Figma (maquettes), Notion (organisation), GitHub, MailTrap (test e-mails)</li>
+        <li><strong>Interface moderne :</strong> Mode dark/light, animations, parallaxe, slider avant/après, galerie lightbox</li>
+        <li><strong>Multilingue complet :</strong> FR/EN avec URLs localisées</li>
+        <li><strong>Formulaire avancé :</strong> Anti-spam hCaptcha, rate limiting, double confirmation email</li>
+        <li><strong>10+ pages :</strong> Site complet avec mentions légales, politique RGPD, 404 personnalisée, page links</li>
+        <li><strong>Performance & sécurité :</strong> Images WebP/AVIF, CSP, protection XSS, accessibilité WCAG 2.1</li>
       </ul>
+
+      <h4>📈 SEO & Présence digitale</h4>
+      <ul>
+        <li><strong>Référencement technique :</strong> Métadonnées optimisées, sitemap multilingue, Schema.org, hreflang</li>
+        <li><strong>SEO local :</strong> Création et optimisation de la fiche Google Business Profile</li>
+        <li><strong>Réseaux sociaux :</strong> Création et gestion des comptes professionnels</li>
+        <li><strong>Analytics :</strong> Google Analytics 4 configuré, suivi des conversions</li>
+      </ul>
+
+      <h4>🎯 Résultats</h4>
+      <p>
+        Site performant en production, référencement local optimisé, présence digitale complète établie,
+        conformité RGPD totale, plus de 50 commits pour un projet professionnel de qualité.
+      </p>
+
       <div class="slider">
         <button class="prev">&#10094;</button>
-
         <div class="slides-container">
-          <img src="assets/img/HEC/accueil.jpg" alt="Capture d'écran de la page d'accueil du site Haut En Couleur" loading="lazy">
-          <img src="assets/img/HEC/a_propos.jpg" alt="Capture d'écran de la page à propos du site Haut En Couleur" loading="lazy">
-          <img src="assets/img/HEC/realisations.jpg" alt="Capture d'écran de la page réalisations du site Haut En Couleur" loading="lazy">
-          <img src="assets/img/HEC/contact.jpg" alt="Capture d'écran de la page contact du site Haut En Couleur" loading="lazy">
+          <img src="assets/img/HEC/Accueil1.png" alt="Capture d'écran de la page d'accueil du site Haut En Couleur" loading="lazy">
+          <img src="assets/img/HEC/Prestation1.png" alt="Capture d'écran de la page prestations du site Haut En Couleur" loading="lazy">
+          <img src="assets/img/HEC/Contact1.png" alt="Capture d'écran de la page contact du site Haut En Couleur" loading="lazy">
         </div>
         <button class="next">&#10095;</button>
       </div>
-      
+
     </div>
   </div>
   
@@ -638,7 +657,10 @@
 
   <!-- ajout fonction zoom sur image pop up -->
   <div id="lightbox" class="lightbox">
+    <button class="lightbox-prev" aria-label="Image précédente">&#10094;</button>
     <img id="lightbox-img" src="" alt="Zoom image">
+    <button class="lightbox-next" aria-label="Image suivante">&#10095;</button>
+    <button class="lightbox-close" aria-label="Fermer">&times;</button>
   </div> 
 
 <!-- bouton Retour en haut -->

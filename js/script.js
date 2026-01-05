@@ -27,14 +27,19 @@ function openModal(id) {
 
   // Piéger le focus dans le modal
   trapFocus(modal);
+
+  // Ajouter la navigation clavier pour le slider
+  handleSliderKeyboard(id);
 }
 
 function closeModal(id) {
   const modal = document.getElementById(id);
   modal.style.display = 'none';
 
-  // Retirer l'écouteur d'événement Escape
+  // Retirer les écouteurs d'événements
   document.removeEventListener('keydown', handleModalEscape);
+  document.removeEventListener('keydown', handleSliderKeyboardNav);
+  currentModalId = null;
 }
 
 // Fonction pour gérer la touche Escape
@@ -45,7 +50,30 @@ function handleModalEscape(event) {
       modal.style.display = 'none';
     });
     document.removeEventListener('keydown', handleModalEscape);
+    document.removeEventListener('keydown', handleSliderKeyboardNav);
   }
+}
+
+// Variable pour stocker le modalId actuel
+let currentModalId = null;
+
+// Fonction pour la navigation au clavier dans le slider
+function handleSliderKeyboardNav(event) {
+  if (!currentModalId) return;
+
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    changeSlide(currentModalId, -1);
+  } else if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    changeSlide(currentModalId, 1);
+  }
+}
+
+// Fonction pour activer la navigation clavier du slider
+function handleSliderKeyboard(modalId) {
+  currentModalId = modalId;
+  document.addEventListener('keydown', handleSliderKeyboardNav);
 }
 
 // Fonction pour piéger le focus dans le modal
@@ -90,15 +118,61 @@ function changeSlide(modalId, direction) {
   slides[slideIndexMap[modalId]].classList.add('active');
 }
 
+// Variables pour le lightbox
+let lightboxImages = [];
+let currentLightboxIndex = 0;
+
 function openLightbox(src) {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
+
+  // Récupérer toutes les images du modal actuellement ouvert
+  const openModal = document.querySelector('.modal[style*="display: block"]');
+  if (openModal) {
+    const modalImages = openModal.querySelectorAll('.slides-container img');
+    lightboxImages = Array.from(modalImages).map(img => img.src);
+    currentLightboxIndex = lightboxImages.indexOf(src);
+  }
+
   lightboxImg.src = src;
   lightbox.style.display = "flex";
+
+  // Ajouter la navigation clavier
+  document.addEventListener('keydown', handleLightboxKeyboard);
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
+  const lightbox = document.getElementById("lightbox");
+  lightbox.style.display = "none";
+
+  // Retirer la navigation clavier
+  document.removeEventListener('keydown', handleLightboxKeyboard);
+}
+
+function changeLightboxImage(direction) {
+  if (lightboxImages.length === 0) return;
+
+  currentLightboxIndex += direction;
+
+  // Boucle circulaire
+  if (currentLightboxIndex < 0) currentLightboxIndex = lightboxImages.length - 1;
+  if (currentLightboxIndex >= lightboxImages.length) currentLightboxIndex = 0;
+
+  const lightboxImg = document.getElementById("lightbox-img");
+  lightboxImg.src = lightboxImages[currentLightboxIndex];
+}
+
+function handleLightboxKeyboard(event) {
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    changeLightboxImage(-1);
+  } else if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    changeLightboxImage(1);
+  } else if (event.key === 'Escape') {
+    event.preventDefault();
+    closeLightbox();
+  }
 }
 
 // --- DOM Ready ---
@@ -158,10 +232,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Event listener pour fermer le lightbox
+  // Event listeners pour le lightbox
   const lightbox = document.getElementById('lightbox');
+  const lightboxPrev = document.querySelector('.lightbox-prev');
+  const lightboxNext = document.querySelector('.lightbox-next');
+  const lightboxClose = document.querySelector('.lightbox-close');
+
   if (lightbox) {
-    lightbox.addEventListener('click', closeLightbox);
+    // Fermer en cliquant sur le fond (mais pas sur l'image ou les boutons)
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  }
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      changeLightboxImage(-1);
+    });
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      changeLightboxImage(1);
+    });
+  }
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
   }
 
   // Menu burger
